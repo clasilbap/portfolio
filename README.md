@@ -1,6 +1,6 @@
 # clasilbap • Portfólio
 
-![Preview do site](img/pixel.png)
+![Preview do site](img/pixel2.png)
 
 Bem-vindo(a) ao meu portfólio.  
 Este projeto representa minha presença profissional como desenvolvedora Web Front-End em formação. Aqui você encontrará meus principais projetos, minhas habilidades e um pouco sobre minha trajetória na área de tecnologia.
