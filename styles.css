@@ -1,0 +1,402 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* conatiner principal */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  padding-top: 60px;
+}
+
+/* capa */
+.capa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.capa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* o perfil */
+.perfil-interativo {
+  position: relative;
+  display: inline-block;
+  margin-top: 130px;
+}
+
+.perfil-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 12px red, 0 0 24px red, 0 0 36px white;
+  transition: all 0.3s ease;
+}
+
+.perfil-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px black, 0 0 30px black, 0 0 50px red;
+}
+
+/* pulsador */
+.pulsador::before,
+.pulsador::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.2), transparent);
+  animation: pulse-ring 2.4s infinite ease-out;
+  z-index: 0;
+}
+
+.pulsador::after {
+  animation-delay: 1.2s;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* a caixa "sobre mim" */
+.sobre-tooltip {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 520px;
+  max-width: 95vw;
+  background: linear-gradient(135deg, #000000, #cc0000);
+  color: #e0f7ff;
+  border-radius: 12px;
+  padding: 28px 35px;
+  text-align: left;
+  box-shadow: 0 0 20px rgba(228, 35, 35, 0.4);
+  z-index: 3;
+  animation: fadeIn 0.4s ease-in-out;
+  overflow-wrap: break-word;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.perfil-interativo:hover .sobre-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sobre-tooltip a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.sobre-tooltip a:hover {
+  color: #d8aaff;
+}
+
+
+/* título */
+.titulo {
+  margin-top: 30px;
+}
+
+.nome {
+  font-size: 36px;
+  color: #fff;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.subtitulo {
+  font-size: 18px;
+  color: #ccc;
+  text-shadow: 1px 1px 2px #000;
+  margin-top: 8px;
+}
+
+/* atalhos */
+.atalhos-topo {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.atalhos-topo a {
+  font-size: 28px;
+  text-decoration: none;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 2px 2px 6px rgba(255, 77, 77, 0.2);
+  transition: all 0.3s ease;
+}
+
+.atalhos-topo a:hover {
+  transform: translateY(-3px);
+  box-shadow: 2px 6px 12px rgba(255, 77, 77, 0.4);
+  background: rgba(255, 77, 77, 0.1);
+}
+
+/* tooltip */
+.atalho-com-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.caixa-explicativa {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #4a0a0a, #cc0000);
+  color: #e0f7ff;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  width: 260px;
+  text-align: center;
+  box-shadow: 0 0 16px rgba(255, 77, 77, 0.3);
+  z-index: 10;
+  line-height: 1.4;
+  transition: opacity 0.3s ease;
+}
+
+.atalho-com-tooltip:hover .caixa-explicativa {
+  opacity: 1;
+  visibility: visible;
+}
+
+.caixa-explicativa::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #cc0000 transparent transparent transparent;
+}
+/* tecnologias */
+.tecnologias-flutuantes {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.tecnologias-flutuantes span {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #ffbfbf;
+  animation: flutuar 5s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+@keyframes flutuar {
+  0% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+}
+
+/* menu superior */
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 12px 0;
+  text-align: center;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+}
+
+.menu a {
+  margin: 0 20px;
+  color: #e22b2b;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #ffffff;
+}
+
+/* contato */
+#contato {
+  padding: 60px 20px;
+  background: #111;
+  text-align: center;
+}
+
+.form-contato {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-contato h2 {
+  color: #e22b2b;
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.form-contato input,
+.form-contato textarea {
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  resize: none;
+}
+
+.form-contato input::placeholder,
+.form-contato textarea::placeholder {
+  color: #bbb;
+}
+
+.form-contato button {
+  background-color: #e22b2b;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-contato button:hover {
+  background-color: #f34141;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: block;
+  }
+
+  .perfil-interativo .sobre-tooltip {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    position: absolute !important;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .perfil-interativo.mostrar-sobre .sobre-tooltip {
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: fixed !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  width: 90%;
+  max-width: 520px;
+  box-shadow: 0 0 20px rgba(228, 35, 35, 0.4);
+  padding: 20px;
+  z-index: 999;
+  background: linear-gradient(135deg, #000000, #cc0000);
+  border-radius: 12px;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+
+  .atalhos-topo {
+    display: none !important;
+  }
+
+  .mostrar-projetos .atalhos-topo {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 769px) {
+  .menu {
+    display: none;
+  }
+}
+
+
+#overlayMobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  display: none;
+}

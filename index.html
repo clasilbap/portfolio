@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>clasilbap • Portfólio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="img/pixel2.png" type="image/png" />
+</head>
+
+<body>
+  <!-- Menu de navegação visível apenas no mobile -->
+  <nav class="menu">
+    <a href="#" id="link-sobre">Sobre</a>
+    <a href="#contato">Entre em contato</a>
+    <a href="apresentação.pdf" download>📥 Apresentação</a>
+  </nav>
+
+  <section class="hero">
+    <div class="capa">
+      <img src="img/pixel.jpg" alt="Capa animada" />
+    </div>
+
+    <!-- minha foto de perfil com efeito e tooltip -->
+    <div class="perfil-interativo" id="perfilInterativo">
+      <div class="pulsador"></div>
+      <img src="img/pixel2.png" alt="Foto de Perfil" class="perfil-img" id="perfilFoto" />
+      <div id="overlayMobile" style="display: none;"></div>
+
+      <div class="sobre-tooltip" id="sobreTooltip">
+        <h3>Sobre mim</h3>
+        <p>
+          Desenvolvedora Web Full-Stack em formação, sou estudante de Análise e Desenvolvimento de Sistemas, 
+          com mais de um ano explorando tecnologias e plataformas por conta própria. 
+          Apaixonada por criar soluções digitais e focada em aprender frameworks modernos, 
+          cibersegurança e boas práticas de desenvolvimento.<br /><br />
+          <strong>Objetivo:</strong><br />
+          Criar soluções que impactem positivamente a vida das pessoas e empresas por meio da tecnologia.<br /><br />
+          <em>"Transformando estudo em prática e sonhos em código, 
+            essa é só a primeira linha da minha história."</em>
+        </p>
+
+        <div class="tecnologias-flutuantes">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span><span>React.js</span>
+          <span>Node.js</span><span>GitHub</span><span>SQL</span><span>Django</span>
+          <span>C++</span><span>Bootstrap</span><span>e muito mais!</span>
+        </div>
+
+        <div class="contato-links" style="margin-top: 15px;">
+          <p style="font-size: 14px;">
+            <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/clasilbap/" target="_blank">clasilbap</a><br />
+            <strong>GitHub:</strong> <a href="https://github.com/clasilbap" target="_blank">github.com/clasilbap</a><br />
+            <strong>Email:</strong> <a href="mailto:clasilbap@outlook.com" target="_blank">clasilbap@outlook.com</a><br />
+            <strong>Instagram:</strong> <a href="https://www.instagram.com/cabohyun/" target="_blank">profissional em produção</a><br />
+            <strong>Blog:</strong> em produção
+          </p>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="titulo">
+      <h1 class="nome">Maria Clara Baptista</h1>
+      <p class="subtitulo">Desenvolvedora Web Full-Stack em Formação • Estudante de ADS • Entusiasta em Cibersegurança</p>
+    </div>
+
+    <div class="atalhos-topo">
+      <div class="atalho-com-tooltip">
+        <a href="apresentação.pdf" target="_blank" rel="noopener noreferrer" aria-label="Apresentação PDF">📥</a>
+        <div class="caixa-explicativa">
+          <strong>Minha carta de apresentação</strong><br />
+          Clique para visualizar ou baixar completo.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <form action="https://formsubmit.co/clasilbap@outlook.com" method="POST" class="form-contato">
+      <h2>Deixe o seu contato</h2>
+
+      <input type="text" name="nome" placeholder="Seu nome" required />
+      <input type="email" name="email" placeholder="Seu e-mail" required />
+      <input type="tel" name="telefone" placeholder="Seu celular" />
+      <textarea name="mensagem" placeholder="Escreva sua mensagem..." rows="5" required></textarea>
+
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://seuportfoliomaravilhoso.com/obrigado.html" />
+
+      <button type="submit">Enviar mensagem</button>
+    </form>
+  </section>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sobreLink = document.getElementById('link-sobre');
+    const contatoLink = document.querySelector('a[href="#contato"]');
+    const perfilContainer = document.querySelector('.perfil-interativo');
+    const overlayMobile = document.getElementById('overlayMobile');
+
+    function limparTudo() {
+      perfilContainer.classList.remove('mostrar-sobre');
+      overlayMobile.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    sobreLink.addEventListener('click', function (e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        const isOpen = perfilContainer.classList.contains('mostrar-sobre');
+        if (!isOpen) {
+          perfilContainer.classList.add('mostrar-sobre');
+          overlayMobile.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        } else {
+          limparTudo();
+        }
+      }
+    });
+
+    overlayMobile.addEventListener('click', limparTudo);
+
+    contatoLink?.addEventListener('click', function (e) {
+      if (window.innerWidth <= 768) {
+        limparTudo();
+      }
+      const contato = document.getElementById('contato');
+      if (contato) contato.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+  <footer>
+  <p> &copy; 2025 Maria Clara Baptista. Todos os direitos reservados. </p>
+</footer>
+
+</body>
+</html>
