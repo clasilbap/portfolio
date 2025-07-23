@@ -77,6 +77,10 @@
   </section>
 
   <section id="contato">
+    <p id="mensagem-enviada" style="display: none; color: white; text-align: center; font-weight: bold; margin-top: 10px;">
+  ✨ Sua mensagem foi enviada com sucesso! Redirecionando...
+</p>
+
     <form action="https://formsubmit.co/clasilbap@outlook.com" method="POST" class="form-contato">
       <h2>Deixe o seu contato</h2>
 
@@ -86,7 +90,8 @@
       <textarea name="mensagem" placeholder="Escreva sua mensagem..." rows="5" required></textarea>
 
       <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value="https://seuportfoliomaravilhoso.com/obrigado.html" />
+      <input type="hidden" name="_next" value="index.html" />
+
 
       <button type="submit">Enviar mensagem</button>
     </form>
@@ -131,6 +136,40 @@
     });
   });
 </script>
+
+<script>
+  const formulario = document.querySelector('.form-contato');
+  const mensagem = document.getElementById('mensagem-enviada');
+
+  formulario.addEventListener('submit', function (e) {
+    e.preventDefault(); // Impede o envio imediato
+
+    const formData = new FormData(formulario);
+
+    fetch(formulario.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        mensagem.style.display = 'block';
+        formulario.reset();
+        setTimeout(() => {
+          window.location.href = 'index.html'; // Redireciona para o topo da página
+        }, 3000); // espera 3 segundos
+      } else {
+        alert('Ops! Algo deu errado. Tente novamente.');
+      }
+    })
+    .catch(error => {
+      alert('Erro de conexão. Verifique sua internet.');
+    });
+  });
+</script>
+
 
   <footer>
   <p> &copy; 2025 Maria Clara Baptista. Todos os direitos reservados. </p>
